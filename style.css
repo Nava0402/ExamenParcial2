@@ -1,0 +1,19 @@
+body{ font-family: sans-serif;
+background-color: rgb(245, 245, 245);
+align-items: center;
+margin: 0;
+padding: 20px;
+font-size: small;
+border-radius: 8px;}
+
+.sub{margin: auto;
+border: 2px solid lightblue;
+padding: 20px;
+background: #20b2aa;
+width: 600px;}
+
+.subtitulo{
+border: 2px solid (hsl(208, 65%, 44%));
+box-shadow: 0 0 5px rgba(0, 0, 0, 1);
+padding: 15px;
+border-radius:8px;}

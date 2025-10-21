@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recibo Telefónico</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <form action="">
+        <h1 class="titulo" style="text-align: center;">Recibo Telefónico</h1>
+
+        <div class="sub">
+            <h2 class="subtitulo">Calcular Minutos</h2>
+            <label for="Minutos">Minutos de celular (10.00 MXN c/u)
+                <input type="number" placeholder="100">
+            </label>
+        </div>
+
+        <div class="sub">
+            <h2 class="subtitulo">Tipo de Plan</h2>
+            <label for="Plan">
+                    <input type="radio">Solo teléfono (100 MXN)
+                    <input type="radio">Teléfono + Internet (200 MXN)
+                    <input type="radio">Teléfono + Internet + TV (300 MXN)
+            </label>
+        </div>
+
+        <div class="sub">
+            <h2 class="subtitulo">Servicios Adicionales</h2>
+            <label for="Servicios">
+                <input type="checkbox">Antivirus (50 MXN)
+                <input type="checkbox">Servicio de Nube (150 MXN)
+                <input type="checkbox">Web Services (250 MXN)
+            </label>
+        </div>
+
+        <div class="sub">
+            <h2 class="subtitulo">Paquetes</h2>
+            <label for="Paquetes">
+                <select>
+                    <option value="">Residencial</option>
+                    <option value="">PYMES</option>
+                    <option value="">Empresas</option>
+                </select>
+            </label>
+        </div>
+
+        <div class="sub">
+            <h2 class="subtitulo">Total a Pagar</h2>
+            <input type="text" readonly>
+            <button>Calcular</button>
+        </div>
+    </form>
+    
+</body>
+</html>
