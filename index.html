@@ -8,50 +8,115 @@
 </head>
 <body>
 
-    <form action="">
+    <form action="" method="get" id="CalculoMinutos">
         <h1 class="titulo" style="text-align: center;">Recibo Telefónico</h1>
+
+        <div class="sub">
+            <h2 class="subtitulo">Nobre del Cliente</h2>
+            <label for="Cliente">
+                <input type="text" id="Cliente" name="Cliente">
+            </label>
+        </div>
 
         <div class="sub">
             <h2 class="subtitulo">Calcular Minutos</h2>
             <label for="Minutos">Minutos de celular (10.00 MXN c/u)
-                <input type="number" placeholder="100">
+                <input type="number" placeholder="100" id="Minutos" name="Minutos" value="10">
             </label>
         </div>
 
         <div class="sub">
             <h2 class="subtitulo">Tipo de Plan</h2>
             <label for="Plan">
-                    <input type="radio">Solo teléfono (100 MXN)
-                    <input type="radio">Teléfono + Internet (200 MXN)
-                    <input type="radio">Teléfono + Internet + TV (300 MXN)
+                <input type="radio" id="Tel" name="Plan" value="Tel">Solo teléfono (100 MXN)
+            </label>
+            <label for="Plan">
+                <input type="radio" id="Internet" name="Plan" value="Internet">Teléfono + Internet (200 MXN)
+            </label>
+            <label for="Plan">
+                <input type="radio" id="Tv" name="Plan" value="Tv">Teléfono + Internet + TV (300 MXN)
             </label>
         </div>
 
         <div class="sub">
             <h2 class="subtitulo">Servicios Adicionales</h2>
             <label for="Servicios">
-                <input type="checkbox">Antivirus (50 MXN)
-                <input type="checkbox">Servicio de Nube (150 MXN)
-                <input type="checkbox">Web Services (250 MXN)
+                <input type="checkbox" name="Servicios" id="Antivirus" value="Antivirus">Antivirus (50 MXN)
+                <input type="checkbox" name="Servicios" id="Nube" value="Nube">Servicio de Nube (150 MXN)
+                <input type="checkbox" name="Servicios" id="Web" value="Web">Web Services (250 MXN)
             </label>
         </div>
 
         <div class="sub">
             <h2 class="subtitulo">Paquetes</h2>
             <label for="Paquetes">
-                <select>
-                    <option value="">Residencial</option>
-                    <option value="">PYMES</option>
-                    <option value="">Empresas</option>
+                <select name="Paquetes" id="Paquetes">
+                    <option value="" name="Paquetes">Residencial (200 MXN)</option>
+                    <option value="" name="Paquetes">PYMES (300 MXN)</option>
+                    <option value="" name="Paquetes">Empresas (400 MXN)</option>
                 </select>
             </label>
         </div>
 
         <div class="sub">
             <h2 class="subtitulo">Total a Pagar</h2>
-            <input type="text" readonly>
-            <button>Calcular</button>
+            <input type="text" id="Resultado" readonly>
+            <button class="boton" onclick="calcular()">Calcular</button>
         </div>
+
+        <script>
+            var formulario; formulario = document.getElementById("CalculoMinutos");
+
+            function calcular() {
+                var total = 0; var Minutos = formulario.Minutos.value; total = Minutos * 10;
+
+                var cliente = formulario.Cliente.value; 
+
+                if (formulario.Plan.value == "Tel") {
+                    total = total + 100; 
+                }
+                else {
+                    total = total;
+                }
+                
+                if (formulario.Plan.value == "Internet") {
+                    total = total + 200; 
+                }
+                else {
+                    total = total;
+                }
+
+                if (formulario.Plan.value == "Tv") {
+                    total = total + 300; 
+                }
+                else {
+                    total = total;
+                }
+
+                if (formulario.Servicios.value == "Antivirus") {
+                    total = total + 50; 
+                }
+                else {
+                    total = total;
+                }
+                
+                if (formulario.Servicios.value == "Nube") {
+                    total = total + 150; 
+                }
+                else {
+                    total = total;
+                }
+
+                if (formulario.Servicios.value == "Web") {
+                    total = total + 250; 
+                }
+                else {
+                    total = total;
+                }
+
+                alert(total);
+            }
+        </script>
     </form>
     
 </body>
