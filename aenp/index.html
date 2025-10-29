@@ -4,7 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recibo Telefónico</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+
+.titulo{ text-align: center;
+font-size: 2em; 
+color: #2069b3;
+text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+margin-bottom: 30px;}
+
+body{ font-family: sans-serif;
+background-color: rgb(245, 245, 245);
+display: flex;
+flex-direction: column;
+align-items: center;
+margin: 0;
+padding: 20px;
+font-size: small;}
+
+.sub{ background-color: #ffffff;
+border: 1px solid #cccc;
+box-shadow: 0 0 5px rgba(0, 0, 0, 1);
+padding: 15px;
+margin: 10px;
+width: 600px;
+border-radius: 8px;}
+
+.subtitulo{ font-size: 1.2em;
+color: #0066cc;
+margin-bottom: 10px;
+text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);}
+
+input[type="text"], 
+input[type="number"], 
+select{ width: 100%;
+padding: 8px;
+margin-top: 5px;
+border: 1px solid #aaa;
+border-radius: 6px;
+box-sizing: border-box;}
+
+.boton{ margin-top: 10px;
+padding: 10px 20px;
+border: none;
+border-radius: 6px;
+background-color: #007acc;
+color: white;
+box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+cursor: pointer;}
+
+.boton:hover{ background-color: #005f99;}
+
+.resultado{ text-align: center;}
+
+    </style>
 </head>
 <body>
 
@@ -41,9 +93,9 @@
         <div class="sub">
             <h2 class="subtitulo">Servicios Adicionales</h2>
             <label for="Servicios">
-                <input type="checkbox" name="Servicios" id="Antivirus" value="Antivirus">Antivirus (50 MXN)
-                <input type="checkbox" name="Servicios" id="Nube" value="Nube">Servicio de Nube (150 MXN)
-                <input type="checkbox" name="Servicios" id="Web" value="Web">Web Services (250 MXN)
+                <input type="checkbox" name="Antivirus" id="Antivirus" value="Antivirus">Antivirus (50 MXN)
+                <input type="checkbox" name="Nube" id="Nube" value="Nube">Servicio de Nube (150 MXN)
+                <input type="checkbox" name="Web" id="Web" value="Web">Web Services (250 MXN)
             </label>
         </div>
 
@@ -51,23 +103,27 @@
             <h2 class="subtitulo">Paquetes</h2>
             <label for="Paquetes">
                 <select name="Paquetes" id="Paquetes">
-                    <option value="" name="Paquetes">Residencial (200 MXN)</option>
-                    <option value="" name="Paquetes">PYMES (300 MXN)</option>
-                    <option value="" name="Paquetes">Empresas (400 MXN)</option>
+                    <option value="None" name="None" id="None">Ninguno (00.00 MXN)</option>
+                    <option value="Residencial" name="Residencial" id="Residencial" >Residencial (200 MXN)</option>
+                    <option value="PYMES" name="PYMES" id="PYMES">PYMES (300 MXN)</option>
+                    <option value="Empresas" name="Empresas" id="Empresas">Empresas (400 MXN)</option>
                 </select>
             </label>
         </div>
 
         <div class="sub">
             <h2 class="subtitulo">Total a Pagar</h2>
-            <input type="text" id="Resultado" readonly>
+            <input type="text" id="resultado" readonly>
             <button class="boton" onclick="calcular()">Calcular</button>
         </div>
 
         <script>
+
             var formulario; formulario = document.getElementById("CalculoMinutos");
 
             function calcular() {
+                event.preventDefault();
+
                 var total = 0; var Minutos = formulario.Minutos.value; total = Minutos * 10;
 
                 var cliente = formulario.Cliente.value; 
@@ -93,29 +149,45 @@
                     total = total;
                 }
 
-                if (formulario.Servicios.value == "Antivirus") {
+
+                if (formulario.Antivirus.checked == true) {
                     total = total + 50; 
                 }
                 else {
                     total = total;
                 }
-                
-                if (formulario.Servicios.value == "Nube") {
+
+                if (formulario.Nube.checked == true) {
                     total = total + 150; 
                 }
                 else {
                     total = total;
                 }
 
-                if (formulario.Servicios.value == "Web") {
+                if (formulario.Web.checked == true) {
                     total = total + 250; 
                 }
                 else {
                     total = total;
                 }
 
-                alert(total);
+                
+
+                if (formulario.Paquetes.value == "Ninguno") {
+                    total = total + 0; 
+                } else if (formulario.Paquetes.value == "Residencial") {
+                total = total + 200
+                } else if (formulario.Paquetes.value == "PYMES") {
+                    total = total + 300; 
+                } else if (formulario.Paquetes.value == "Empresas") {
+                    total = total + 400; 
+                }
+
+                formulario.resultado.value = total + "MXN";
+
+                alert ("Total = " + total + "MXN");
             }
+
         </script>
     </form>
     
